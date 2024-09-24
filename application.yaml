@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/refaelb/helm-aws-resource.git
+        repoURL: https://github.com/moti-cohen/argo.git
         targetRevision: HEAD
         path: 'lambda-rds'  # הנתיב ל-Helm chart שלך
         helm:
