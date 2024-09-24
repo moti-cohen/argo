@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/refaelb/helm-aws-resource.git
+        repoURL: https://github.com/moti-cohen/argo.git
         revision: main  # Changed from targetRevision to revision
         files:
           - path: environment/*.yaml
