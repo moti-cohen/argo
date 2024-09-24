@@ -1,3 +1,31 @@
+apiVersion: ec2.services.k8s.aws/v1alpha1
+kind: SecurityGroup
+metadata:
+  name: {{ .Values.securityGroupRDS.name }}
+  namespace: default
+spec:
+  description: {{ .Values.securityGroupRDS.description | quote }}
+  vpcID: {{ .Values.vpcID | quote }}
+  ingressRules:
+    {{- range .Values.securityGroupRDS.ingressRules }}
+    - fromPort: {{ .fromPort }}
+      toPort: {{ .toPort }}
+      ipProtocol: {{ .ipProtocol | quote }}
+      userIDGroupPairs:
+        - groupID: {{ .groupID | quote }}
+          description: {{ .description | quote }}
+    {{- end }}
+  egressRules:
+    - fromPort: 0
+      toPort: 0
+      ipProtocol: -1
+      ipRanges:
+        - cidrIP: "0.0.0.0/0"
+          description: "Allow all outbound traffic"
+
+
+---
+
 apiVersion: rds.services.k8s.aws/v1alpha1
 kind: DBInstance
 metadata:
