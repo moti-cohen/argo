@@ -1,1 +1,31 @@
-
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: dynamic-appset
+  namespace: argo-cd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/refaelb/helm-aws-resource.git
+        revision: main  # Changed from targetRevision to revision
+        files:
+          - path: environment/*.yaml
+  template:
+    metadata:
+      name: '{{path.basename}}-app'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/refaelb/helm-aws-resource.git
+        targetRevision: HEAD
+        path: 'lambda-rds'  # הנתיב ל-Helm chart שלך
+        helm:
+          valueFiles:
+            - '{{path}}'  # שימוש בקובץ ה-values.yaml שזוהה
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
