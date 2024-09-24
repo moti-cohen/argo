@@ -1,1 +1,17 @@
-
+apiVersion: ec2.services.k8s.aws/v1alpha1
+kind: SecurityGroup
+metadata:
+  name: {{ .Values.securityGroupLambda.name }}
+  namespace: default
+spec:
+  description: {{ .Values.securityGroupLambda.description | quote }}
+  vpcID: {{ .Values.vpcID | quote }}
+  ingressRules:
+    []
+  egressRules:
+    - fromPort: 0
+      toPort: 0
+      ipProtocol: -1
+      ipRanges:
+        - cidrIP: "0.0.0.0/0"
+          description: "Allow all outbound traffic"
