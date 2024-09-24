@@ -1,1 +1,23 @@
+apiVersion: lambda.services.k8s.aws/v1alpha1
+kind: Function
+metadata:
+  name: {{ .Values.lambda.functionName }}
+  namespace: default
+spec:
+  functionName: {{ .Values.lambda.functionName | quote }}
+  role: {{ .Values.lambda.role | quote }}
+  code:
+    s3Bucket: {{ .Values.lambda.s3Bucket | quote }}
+    s3Key: {{ .Values.lambda.s3Key | quote }}
+  handler: {{ .Values.lambda.handler | quote }}
+  runtime: {{ .Values.lambda.runtime | quote }}
+  memorySize: {{ .Values.lambda.memorySize }}
+  timeout: {{ .Values.lambda.timeout }}
+  vpcConfig:
+    securityGroupIDs:
+      - {{ .Values.securityGroupLambda.name }}
+    subnetIDs:
+      {{- range .Values.lambda.subnetIDs }}
+      - {{ . | quote }}
+      {{- end }}
 
