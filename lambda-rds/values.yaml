@@ -8,7 +8,7 @@ securityGroupRDS:
     - fromPort: 3306
       toPort: 3306
       ipProtocol: tcp
-      groupID: "sg-lambda"
+      groupID: "sg-0e7b261c28e9fe78e"
       description: "Allow traffic from Lambda"
 
 securityGroupLambda:
