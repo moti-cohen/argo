@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/moti-cohen/argo.git
         revision: main  # Changed from targetRevision to revision
         files:
-          - path: environment/*.yaml
+          - path: lambda-rds/*.yaml
   template:
     metadata:
       name: '{{path.basename}}-app'
