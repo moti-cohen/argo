@@ -18,7 +18,7 @@ spec:
   egressRules:
     - fromPort: 0
       toPort: 0
-      ipProtocol: -1
+      ipProtocol: tcp
       ipRanges:
         - cidrIP: "0.0.0.0/0"
           description: "Allow all outbound traffic"
