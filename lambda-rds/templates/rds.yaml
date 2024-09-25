@@ -4,6 +4,7 @@ metadata:
   name: {{ .Values.securityGroupRDS.name }}  # This should resolve correctly
   namespace: default
 spec:
+  name: {{ .Values.securityGroupRDS.name }}  # This should resolve correctly
   description: {{ .Values.securityGroupRDS.description | quote }}  # Ensure the description is quoted correctly
   vpcID: {{ .Values.vpcID | quote }}  # Quote the VPC ID as well
   ingressRules:
