@@ -1,7 +1,7 @@
 vpcID: "vpc-021f9a2abf0532d92"
 
 securityGroupRDS:
-  name: "rds-sg-argo"
+  name: "rds-6"
   id: rds-lambda-2
   description: "Security group for RDS"
   ingressRules:
@@ -12,7 +12,7 @@ securityGroupRDS:
       description: "Allow traffic from Lambda"
 
 securityGroupLambda:
-  name: "lambda-sg-argo"
+  name: "sg-6"
   description: "Security group for Lambda"
   ingressRules: []
   egressRules:
