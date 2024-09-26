@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   name: lambda-5
-  role: arn:aws:iam::123456789012:role/LambdaExecutionRole
+  role: arn:aws:iam::113834750184:role/LambdaExecutionRole
   code:
     s3Bucket: my-bucket
     s3Key: lambda-code.zip
