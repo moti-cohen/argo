@@ -8,7 +8,7 @@ spec:
   role: arn:aws:iam::113834750184:role/LambdaExecutionRole
   code:
     s3Bucket: argo-test2
-    s3Key: lambda-code.zip
+    s3Key: my-lambda.zip
   handler: index.handler
   runtime: nodejs16.x
   memorySize: 128
