@@ -1,0 +1,22 @@
+apiVersion: lambda.services.k8s.aws/v1alpha1
+kind: Function
+metadata:
+  name: lambda-5
+  namespace: default
+spec:
+  name: lambda-5
+  role: arn:aws:iam::123456789012:role/LambdaExecutionRole
+  code:
+    s3Bucket: my-bucket
+    s3Key: lambda-code.zip
+  handler: index.handler
+  runtime: nodejs16.x
+  memorySize: 128
+  timeout: 50
+  vpcConfig:
+    securityGroupIDs:
+      - {{ .Values.securityGroupLambda.name }}
+    subnetIDs:
+      {{- range .Values.lambda.subnetIDs }}
+      - {{ . | quote }}
+      {{- end }}
