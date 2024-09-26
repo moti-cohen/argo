@@ -1,1 +1,49 @@
+apiVersion: ec2.services.k8s.aws/v1alpha1
+kind: SecurityGroup
+metadata:
+  name: rds-sg-with-argo
+  namespace: default
+spec:
+  name: rds-sg-with-argo
+  description: {{ .Values.securityGroupRDS.description | quote }}
+  vpcID: {{ .Values.vpcID | quote }}
+  ingressRules:
+    {{- range .Values.securityGroupRDS.ingressRules }}
+    - fromPort: {{ .fromPort }}
+      toPort: {{ .toPort }}
+      ipProtocol: {{ .ipProtocol | quote }}
+      userIDGroupPairs:
+        - groupID: {{ .groupID | quote }}
+          description: {{ .description | quote }}
+    {{- end }}
+  egressRules:
+    - fromPort: 0
+      toPort: 0
+      ipProtocol: tcp
+      ipRanges:
+        - cidrIP: "10.0.0.0/8"
+          description: "Allow all outbound traffic"
+
+---
+
+apiVersion: rds.services.k8s.aws/v1alpha1
+kind: DBInstance
+metadata:
+  name: {{ .Values.rds.dbInstanceIdentifier }}
+  namespace: default
+spec:
+  dbInstanceIdentifier: {{ .Values.rds.dbInstanceIdentifier | quote }}
+  dbInstanceClass: {{ .Values.rds.dbInstanceClass | quote }}
+  engine: {{ .Values.rds.engine | quote }}
+  masterUsername: {{ .Values.rds.username | quote }}
+  masterUserPassword:
+    namespace: default
+    name: rds
+    key: password
+  allocatedStorage: {{ .Values.rds.allocatedStorage }}
+  backupRetentionPeriod: {{ .Values.rds.backupRetentionPeriod }}
+  publiclyAccessible: false
+  vpcSecurityGroupIDs:
+    - {{ .Values.securityGroupRDS.name }}  # Reference the security group name
+  dbSubnetGroupName: {{ .Values.rds.subnetGroupName | quote }}
 
