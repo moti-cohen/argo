@@ -22,7 +22,7 @@ securityGroupLambda:
       cidrIP: "0.0.0.0/0"
 
 rds:
-  dbInstanceIdentifier: "demo-rds-instance"
+  dbInstanceIdentifier: "rds-6"
   dbInstanceClass: "db.t3.micro"
   engine: "mysql"
   engineVersion: "14"
