@@ -18,7 +18,7 @@ securityGroupLambda:
   egressRules:
     - fromPort: 0
       toPort: 0
-      ipProtocol: -1
+      ipProtocol: tcp
       cidrIP: "0.0.0.0/0"
 
 rds:
