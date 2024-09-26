@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   name: lambda-5
-  role: arn:aws:iam::113834750184:role/LambdaExecutionRole
+  role: arn:aws:iam::113834750184:role/argo-deploy
   code:
     s3Bucket: argo-test2
     s3Key: my-lambda.zip
