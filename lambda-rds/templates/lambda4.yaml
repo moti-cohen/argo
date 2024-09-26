@@ -5,14 +5,14 @@ metadata:
   namespace: default
 spec:
   name: lambda-4
-  role: {{ .Values.lambda.role | quote }}
+  role: arn:aws:iam::123456789012:role/LambdaExecutionRole
   code:
-    s3Bucket: {{ .Values.lambda.s3Bucket | quote }}
-    s3Key: {{ .Values.lambda.s3Key | quote }}
-  handler: {{ .Values.lambda.handler | quote }}
-  runtime: {{ .Values.lambda.runtime | quote }}
-  memorySize: {{ .Values.lambda.memorySize }}
-  timeout: {{ .Values.lambda.timeout }}
+    s3Bucket: my-bucket
+    s3Key: lambda-code.zip
+  handler: index.handler
+  runtime: nodejs14.x
+  memorySize: 128
+  timeout: 30
   vpcConfig:
     securityGroupIDs:
       - {{ .Values.securityGroupLambda.name }}
