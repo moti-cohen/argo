@@ -12,7 +12,7 @@ securityGroupRDS:
       description: "Allow traffic from Lambda"
 
 securityGroupLambda:
-  name: "lambda-sg"
+  name: "lambda-sg-argo"
   description: "Security group for Lambda"
   ingressRules: []
   egressRules:
