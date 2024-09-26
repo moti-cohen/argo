@@ -5,7 +5,6 @@ metadata:
   namespace: default
 spec:
   name: {{ .Values.lambda.functionName }}
-  functionName: {{ .Values.lambda.functionName | quote }}
   role: {{ .Values.lambda.role | quote }}
   code:
     s3Bucket: {{ .Values.lambda.s3Bucket | quote }}
