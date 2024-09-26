@@ -13,10 +13,3 @@ spec:
   runtime: nodejs16.x
   memorySize: 128
   timeout: 50
-  vpcConfig:
-    securityGroupIDs:
-      - sg-0e83db5758627730f
-    subnetIDs:
-      {{- range .Values.lambda.subnetIDs }}
-      - {{ . | quote }}
-      {{- end }}
