@@ -1,8 +1,0 @@
-apiVersion: customresource.example.com/v1alpha1
-kind: MyResource
-metadata:
-  name: my-resource
-  namespace: default
-spec:
-  securityGroupName: sg-6  # Matches the name in the sg-6.yaml file
-  rdsInstanceName: rds-6   # Matches the name in the rds-6.yaml file
