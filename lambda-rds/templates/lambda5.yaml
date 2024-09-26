@@ -15,7 +15,7 @@ spec:
   timeout: 50
   vpcConfig:
     securityGroupIDs:
-      - sg-0495935ef3769db1d"
+      - sg-0e83db5758627730f
     subnetIDs:
       {{- range .Values.lambda.subnetIDs }}
       - {{ . | quote }}
