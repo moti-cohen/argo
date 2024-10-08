@@ -9,8 +9,8 @@ spec:
   vpcID: {{ .Values.vpcID | quote }}  # Quote the VPC ID as well
   ingressRules:
     {{- range .Values.securityGroupRDS.ingressRules }}
-    - fromPort: {{ .fromPort }}
-      toPort: {{ .toPort }}
+    - fromPort: 80
+      toPort: 81
       ipProtocol: {{ .ipProtocol | quote }}
       userIDGroupPairs:
         - groupID: {{ .groupID | quote }}
