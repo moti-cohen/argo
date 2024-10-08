@@ -12,8 +12,8 @@ spec:
     - fromPort: {{ .fromPort }}
       toPort: {{ .toPort }}
       ipProtocol: {{ .ipProtocol | quote }}
-      userIDGroupPairs:
-        - groupID: {{ .groupID | quote }}
+      ipRanges:  # Use ipRanges if you're specifying CIDR blocks
+        - cidrIP: {{ .cidrIP | quote }}
           description: {{ .description | quote }}
     {{- end }}
   egressRules:
