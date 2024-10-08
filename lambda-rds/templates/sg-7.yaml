@@ -11,7 +11,7 @@ spec:
     {{- range .Values.securityGroupRDS.ingressRules }}
     - fromPort: 80
       toPort: 81
-      ipProtocol: {{ .ipProtocol | quote }}
+      ipProtocol: tcp
       userIDGroupPairs:
         - groupID: {{ .groupID | quote }}
           description: {{ .description | quote }}
