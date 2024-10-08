@@ -1,15 +1,15 @@
 vpcID: "vpc-021f9a2abf0532d92"
 
 securityGroupRDS:
-  name: "rds-6"
-  id: rds-lambda-2
   description: "Security group for RDS"
   ingressRules:
-    - fromPort: 3306
-      toPort: 3306
+    - fromPort: 80
+      toPort: 81
       ipProtocol: tcp
       groupID: "sg-0e7b261c28e9fe78e"
-      description: "Allow traffic from Lambda"
+      description: "Allow traffic from specific group"
+
+      
 
 securityGroupLambda:
   name: "sg-6"
