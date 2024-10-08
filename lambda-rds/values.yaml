@@ -4,7 +4,7 @@ securityGroupRDS:
   description: "Security group for RDS"
   ingressRules:
     - fromPort: 80
-      toPort: 81
+      toPort: 86
       ipProtocol: tcp
       cidrIP: "10.0.0.0/8"  # Specify a CIDR block instead of groupID
       description: "Allow traffic from specific CIDR range"
