@@ -1,7 +1,7 @@
 apiVersion: ec2.services.k8s.aws/v1alpha1
 kind: SecurityGroup
 metadata:
-  name: {{ .Values.securityGroupRDS.name }}  # This should resolve correctly
+  name: "sg-6"
   namespace: default
 spec:
   name: {{ .Values.securityGroupRDS.name }}  # This should resolve correctly
