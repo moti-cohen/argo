@@ -1,10 +1,10 @@
 apiVersion: ec2.services.k8s.aws/v1alpha1
 kind: SecurityGroup
 metadata:
-  name: "sg-7"
+  name: "argo-test1"
   namespace: default
 spec:
-  name: "sg-7"
+  name: "argo-test1"
   description: {{ .Values.securityGroupRDS.description | quote }}  # Ensure the description is quoted correctly
   vpcID: {{ .Values.vpcID | quote }}  # Quote the VPC ID as well
   ingressRules:
