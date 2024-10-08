@@ -5,13 +5,13 @@ metadata:
   namespace: default
 spec:
   name: "argo-test1"
-  description: {{ .Values.securityGroupRDS.description | quote }}  # Ensure the description is quoted correctly
-  vpcID: {{ .Values.vpcID | quote }}  # Quote the VPC ID as well
+  description: {{ .Values.securityGroupRDS.description | quote }}
+  vpcID: {{ .Values.vpcID | quote }}
   ingressRules:
     {{- range .Values.securityGroupRDS.ingressRules }}
-    - fromPort: 80
-      toPort: 81
-      ipProtocol: tcp
+    - fromPort: {{ .fromPort }}
+      toPort: {{ .toPort }}
+      ipProtocol: {{ .ipProtocol | quote }}
       userIDGroupPairs:
         - groupID: {{ .groupID | quote }}
           description: {{ .description | quote }}
