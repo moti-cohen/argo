@@ -6,8 +6,8 @@ securityGroupRDS:
     - fromPort: 80
       toPort: 81
       ipProtocol: tcp
-      groupID: "sg-0e7b261c28e9fe78e"
-      description: "Allow traffic from specific group"
+      cidrIP: "10.0.0.0/8"  # Specify a CIDR block instead of groupID
+      description: "Allow traffic from specific CIDR range"
 
       
 
