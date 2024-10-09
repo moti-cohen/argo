@@ -6,7 +6,7 @@ metadata:
 spec:
   name: "argo-test1"
   description: "Allow traffic from specific CIDR range"
-  vpcID: {{ .Values.vpcID | quote }}
+  vpcID: "vpc-021f9a2abf0532d92"
   ingressRules:
     {{- range .Values.securityGroupRDS.ingressRules }}
     - fromPort: {{ .fromPort }}
