@@ -8,7 +8,7 @@ spec:
   instanceType: t2.micro
   subnetID: subnet-0dd40057437e9bd30  # Replace with your VPC Subnet ID
   securityGroupIDs:
-    - sg-064d6d55b23572aae  # Replace with your security group ID
+    - sg-0e7b261c28e9fe78e  # Replace with your security group ID
   keyName: my-keypair  # Optional: Replace with your EC2 KeyPair name
   minCount: 1  # Minimum number of instances to launch
   maxCount: 1  # Maximum number of instances to launch
