@@ -9,9 +9,9 @@ spec:
   vpcID: "vpc-021f9a2abf0532d92"
   ingressRules:
     {{- range .Values.securityGroupRDS.ingressRules }}
-    - fromPort: {{ .fromPort }}
-      toPort: {{ .toPort }}
-      ipProtocol: {{ .ipProtocol | quote }}
+    - fromPort: 80
+      toPort: 99
+      ipProtocol: tcp
       ipRanges:  # Use ipRanges if you're specifying CIDR blocks
         - cidrIP: {{ .cidrIP | quote }}
           description: {{ .description | quote }}
