@@ -21,4 +21,4 @@ spec:
     - key: Name
       value: ec2-instance-1
     - key: Environment
-      value: dev
+      value: dev-2
