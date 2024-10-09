@@ -14,7 +14,7 @@ spec:
       ipProtocol: tcp
       ipRanges:  # Use ipRanges if you're specifying CIDR blocks
         - cidrIP: {{ .cidrIP | quote }}
-          description: {{ .description | quote }}
+          description: "Allow in traffic"
     {{- end }}
   egressRules:
     - fromPort: 0
