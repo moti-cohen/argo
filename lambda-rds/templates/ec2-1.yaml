@@ -19,6 +19,6 @@ spec:
         volumeType: gp3  # General Purpose SSD
   tags:
     - key: Name
-      value: my-ec2-instance
+      value: ec2-instance-1
     - key: Environment
       value: dev
