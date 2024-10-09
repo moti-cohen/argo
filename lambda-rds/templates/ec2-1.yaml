@@ -4,10 +4,10 @@ metadata:
   name: my-ec2-instance
   namespace: default
 spec:
-  imageID: ami-05842291b9a0bd79f  # Example Amazon Linux 2 AMI ID
+  imageId: ami-05842291b9a0bd79f  # Example Amazon Linux 2 AMI ID
   instanceType: t2.micro
-  subnetID: subnet-0dd40057437e9bd30  # Replace with your VPC Subnet ID
-  securityGroupIDs:
+  subnetId: subnet-0dd40057437e9bd30  # Replace with your VPC Subnet ID
+  securityGroupIds:
     - sg-0d3ae66a07afde7c8  # Replace with your security group ID
   keyName: argo-window  # Optional: Replace with your EC2 KeyPair name
   minCount: 1  # Minimum number of instances to launch
