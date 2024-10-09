@@ -6,9 +6,9 @@ metadata:
 spec:
   imageID: ami-0c55b159cbfafe1f0  # Example Amazon Linux 2 AMI ID
   instanceType: t2.micro
-  subnetID: subnet-0bb1c79de3EXAMPLE  # Replace with your VPC Subnet ID
+  subnetID: subnet-0dd40057437e9bd30  # Replace with your VPC Subnet ID
   securityGroupIDs:
-    - sg-0bb1c79de3EXAMPLE  # Replace with your security group ID
+    - sg-0724532e1cf677a36  # Replace with your security group ID
   keyName: my-keypair  # Optional: Replace with your EC2 KeyPair name
   minCount: 1  # Minimum number of instances to launch
   maxCount: 1  # Maximum number of instances to launch
@@ -16,7 +16,7 @@ spec:
     - deviceName: /dev/xvda
       ebs:
         volumeSize: 8  # Volume size in GB
-        volumeType: gp2  # General Purpose SSD
+        volumeType: gp3  # General Purpose SSD
   tags:
     - key: Name
       value: my-ec2-instance
