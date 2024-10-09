@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   name: "argo-test1"
-  description: {{ .Values.securityGroupRDS.description | quote }}
+  description: "Allow traffic from specific CIDR range"
   vpcID: {{ .Values.vpcID | quote }}
   ingressRules:
     {{- range .Values.securityGroupRDS.ingressRules }}
