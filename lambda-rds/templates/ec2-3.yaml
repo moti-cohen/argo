@@ -4,6 +4,8 @@ metadata:
   name: ec2-instance-3
   namespace: default
 spec:
+  networkInterfaces:
+    - deviceIndex: 0
   imageID: ami-05842291b9a0bd79f  # Example Amazon Linux 2 AMI ID
   instanceType: t2.micro
   subnetID: subnet-0dd40057437e9bd30  # Replace with your VPC Subnet ID
