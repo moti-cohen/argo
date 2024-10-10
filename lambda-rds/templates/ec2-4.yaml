@@ -21,6 +21,6 @@ spec:
     - key: Name
       value: ec2-instance-4
     - key: Environment
-      value: dev-attempt-11
+      value: dev-attempt-12
   monitoring:  # Add this line to enable detailed monitoring
     enabled: true  # Set to true to enable detailed monitoring
