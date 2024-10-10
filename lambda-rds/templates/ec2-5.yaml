@@ -3,9 +3,11 @@ kind: Instance
 metadata:
   name: ec2-instance-5
 spec:
-  imageID: $INSTANCE_AMI_ID
-  instanceType: $INSTANCE_TYPE
-  subnetID: $INSTANCE_SUBNET_ID
+  imageID: ami-05842291b9a0bd79f
+  instanceType: t2.micro
+  subnetID: subnet-0dd40057437e9bd30
   tags:
-    - key: $INSTANCE_TAG_KEY
-      value: $INSTANCE_TAG_VAL
+    - key: Name
+      value: ec2-instance-4
+    - key: Environment
+      value: dev-attempt-12
