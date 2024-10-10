@@ -15,7 +15,7 @@ spec:
   blockDeviceMappings:
     - deviceName: /dev/xvda
       ebs:
-        volumeSize: 8  # Volume size in GB
+        volumeSize: 16  # Volume size in GB
         volumeType: gp3  # General Purpose SSD
   tags:
     - key: Name
