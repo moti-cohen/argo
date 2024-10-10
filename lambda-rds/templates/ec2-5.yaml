@@ -1,13 +1,13 @@
 apiVersion: ec2.services.k8s.aws/v1alpha1
 kind: Instance
 metadata:
-  name: ec2-instance-5
+  name: ec2-instance-6
 spec:
   imageID: ami-05842291b9a0bd79f
   instanceType: t2.micro
   subnetID: subnet-0dd40057437e9bd30
   tags:
     - key: Name
-      value: ec2-instance-4
+      value: ec2-instance-6
     - key: Environment
       value: dev-attempt-12
