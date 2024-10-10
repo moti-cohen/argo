@@ -1,14 +1,14 @@
 apiVersion: ec2.services.k8s.aws/v1alpha1
 kind: Instance
 metadata:
-  name: ec2-instance-4
+  name: ec2-instance-3
   namespace: default
 spec:
   imageID: ami-05842291b9a0bd79f  # Example Amazon Linux 2 AMI ID
   instanceType: t2.micro
   subnetID: subnet-0dd40057437e9bd30  # Replace with your VPC Subnet ID
   securityGroupIDs:
-    - sg-0d3ae66a07afde7c8  # Replace with your security group ID
+    - sg-0a79f535dfb9a1855  # Replace with your security group ID
   keyName: argo-window  # Optional: Replace with your EC2 KeyPair name
   minCount: 1  # Minimum number of instances to launch
   maxCount: 1  # Maximum number of instances to launch
@@ -19,7 +19,7 @@ spec:
         volumeType: gp3  # General Purpose SSD
   tags:
     - key: Name
-      value: ec2-instance-4
+      value: ec2-instance-3
     - key: Environment
       value: dev-attempt-2
   monitoring:  # Add this line to enable detailed monitoring
