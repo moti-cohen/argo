@@ -7,9 +7,9 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/moti-cohen/argo.git
-        revision: main  # Changed from targetRevision to revision
+        revision: main  # Main branch of the repo
         files:
-          - path: lambda-rds/templates/*.yaml
+          - path: lambda-rds/templates/*.yaml  # Path to the manifest files
   template:
     metadata:
       name: '{{path.basename}}-app'
@@ -18,16 +18,16 @@ spec:
       source:
         repoURL: https://github.com/moti-cohen/argo.git
         targetRevision: HEAD
-        path: 'lambda-rds'  # הנתיב ל-Helm chart שלך
+        path: 'lambda-rds'  # Path to Helm chart or Kubernetes manifests
         helm:
           valueFiles:
-            - '{{path}}'  # שימוש בקובץ ה-values.yaml שזוהה
+            - values.yaml  # Correct reference to the values.yaml file in lambda-rds
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: '{{path.basename}}'
+        namespace: '{{path.basename}}'  # Namespace derived from basename
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
         syncOptions:
-          - ApplyOutOfSyncOnly=true  # Ensure only out of sync resources are applied
+          - ApplyOutOfSyncOnly=true  # Only apply out of sync resources
