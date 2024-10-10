@@ -9,6 +9,6 @@ spec:
     - key: Name
       value: ec2-instance-9
     - key: Environment
-      value: dev-attempt-12
+      value: dev-attempt-14
   monitoring:
     enabled: false
