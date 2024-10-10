@@ -10,8 +10,3 @@ spec:
       value: ec2-instance-7
     - key: Environment
       value: dev-attempt-14
-  monitoring:
-    enabled: true
-  networkInterfaces:
-    - deviceIndex: 0  # Primary network interface
-      subnetID: subnet-0dd40057437e9bd30
