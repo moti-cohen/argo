@@ -5,7 +5,6 @@ metadata:
 spec:
   imageID: ami-05842291b9a0bd79f
   instanceType: t2.micro
-  subnetID: subnet-0dd40057437e9bd30
   tags:
     - key: Name
       value: ec2-instance-6
