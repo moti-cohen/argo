@@ -30,4 +30,4 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-      - ApplyOutOfSyncOnly=true  # Ensure only out of sync resources are applied
+          - ApplyOutOfSyncOnly=true  # Ensure only out of sync resources are applied
