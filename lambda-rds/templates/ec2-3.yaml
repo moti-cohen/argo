@@ -1,7 +1,7 @@
 apiVersion: ec2.services.k8s.aws/v1alpha1
 kind: Instance
 metadata:
-  name: ec2-instance-3
+  name: ec2-instance-4
   namespace: default
 spec:
   imageID: ami-05842291b9a0bd79f  # Example Amazon Linux 2 AMI ID
@@ -19,7 +19,7 @@ spec:
         volumeType: gp3  # General Purpose SSD
   tags:
     - key: Name
-      value: ec2-instance-3
+      value: ec2-instance-4
     - key: Environment
       value: dev-attempt-2
   monitoring:  # Add this line to enable detailed monitoring
