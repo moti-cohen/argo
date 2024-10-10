@@ -11,5 +11,9 @@ spec:
       value: ec2-instance-6
     - key: Environment
       value: dev-attempt-12
-  monitoring:  # Add this line to enable detailed monitoring
-    enabled: true  # Set to true to enable detailed monitoring
+  monitoring:
+    enabled: true
+  networkInterfaces:
+    - deviceIndex: 0  # Primary network interface
+      subnetID: subnet-0dd40057437e9bd30
+      associatePublicIpAddress: true  # Set to true if you want a public IP
