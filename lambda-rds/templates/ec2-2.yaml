@@ -22,3 +22,5 @@ spec:
       value: ec2-instance-2
     - key: Environment
       value: dev
+  monitoring:  # Add this line to enable detailed monitoring
+    enabled: true  # Set to true to enable detailed monitoring
