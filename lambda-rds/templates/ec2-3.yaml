@@ -16,7 +16,7 @@ spec:
     - deviceName: /dev/xvda
       ebs:
         volumeSize: 8  # Volume size in GB
-        volumeType: gp2  # General Purpose SSD
+        volumeType: gp3  # General Purpose SSD
   tags:
     - key: Name
       value: ec2-instance-3
