@@ -13,4 +13,4 @@ spec:
     - deviceIndex: 0  # Primary network interface
       subnetID: subnet-0dd40057437e9bd30  # Replace with your subnet ID
       securityGroupIDs:
-        - sg-0a79f535dfb9a1855  # Replace with your security group ID
+        - 	sg-03601bb7a0fee9f2b  # Replace with your security group ID
