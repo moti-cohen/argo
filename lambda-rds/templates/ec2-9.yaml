@@ -3,6 +3,7 @@ kind: Instance
 metadata:
   name: ec2-instance-9
 spec:
+  availabilityZone: eu-west-1c
   imageID: ami-05842291b9a0bd79f
   instanceType: t2.micro
   keyName: eks-private  # Replace with your EC2 key pair name if required
