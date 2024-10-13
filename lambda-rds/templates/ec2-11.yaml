@@ -7,6 +7,6 @@ spec:
   instanceType: t2.micro
   tags:
     - key: Name
-      value: ec2-instance-11
+      value: ec2-instance-30
     - key: Environment
       value: dev-attempt-14
