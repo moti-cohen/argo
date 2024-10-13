@@ -15,4 +15,4 @@ spec:
     - deviceIndex: 0  # Primary network interface
       subnetID: subnet-0dd40057437e9bd30
       securityGroupIDs:
-    - sg-03601bb7a0fee9f2b
+        - sg-03601bb7a0fee9f2b  # Correctly align the security group ID
