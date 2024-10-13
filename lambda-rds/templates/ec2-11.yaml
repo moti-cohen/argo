@@ -15,6 +15,6 @@ spec:
     enabled: true
   networkInterfaces:
     - deviceIndex: 0  # Primary network interface
-      subnetID: subnet-0dd40057437e9bd30  # Ensure this is a valid subnet ID in your VPC
+      subnetID: subnet-0ceef91224e49fab8  # Ensure this is a valid subnet ID in your VPC
       securityGroupIDs:
-        - sg-03601bb7a0fee9f2b  # Ensure this is a valid security group ID
+        - sg-02da53b25f06248fa  # Ensure this is a valid security group ID
