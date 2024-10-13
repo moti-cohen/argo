@@ -1,0 +1,16 @@
+apiVersion: ec2.services.k8s.aws/v1alpha1
+kind: Instance
+metadata:
+  name: ec2-instance-10
+  namespace: default
+spec:
+  availabilityZone: eu-west-1c
+  cpuOptions: {}
+  imageID: ami-05842291b9a0bd79f
+  instanceType: t2.micro
+  keyName: eks-private
+  monitoring:
+    enabled: true
+  subnetID: subnet-0dd40057437e9bd30
+  securityGroupIDs:
+    - sg-03601bb7a0fee9f2b
