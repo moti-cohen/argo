@@ -3,14 +3,16 @@ kind: Instance
 metadata:
   name: ec2-instance-10
   namespace: default
-  uid: 30d5898b-80c9-42c7-8e5a-c4bba0ef0a90  # Ensure this UID is correct
 spec:
   availabilityZone: eu-west-1c
-  capacityReservationSpecification:
-    capacityReservationPreference: open
+  cpuOptions: {}
+  imageID: ami-05842291b9a0bd79f  # Ensure this is correct
+  instanceType: t2.micro
+  keyName: eks-private
+  monitoring:
+    enabled: true
   networkInterfaces:
-    - deviceIndex: 0
+    - deviceIndex: 0  # Primary network interface
+      subnetID: subnet-0dd40057437e9bd30
       securityGroupIDs:
         - sg-03601bb7a0fee9f2b
-      subnetID: subnet-0dd40057437e9bd30
-  placement:  # Check this field, and specify if necessary
