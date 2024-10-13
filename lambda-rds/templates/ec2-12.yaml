@@ -1,20 +1,21 @@
 apiVersion: ec2.services.k8s.aws/v1alpha1
 kind: Instance
 metadata:
-  name: ec2-instance-11
+  name: ec2-instance-12
   namespace: default  # Ensure you specify the namespace if needed
 spec:
   imageID: ami-05842291b9a0bd79f
   instanceType: t2.micro
   tags:
     - key: Name
-      value: ec2-instance-11
+      value: ec2-instance-12
     - key: Environment
       value: dev-attempt-30
   monitoring:
     enabled: true
   networkInterfaces:
     - deviceIndex: 0  # Primary network interface
-      subnetID: subnet-0ceef91224e49fab8  # Ensure this is a valid subnet ID in your VPC
+      subnetID: subnet-0dd40057437e9bd30  # Ensure this is a valid subnet ID in your VPC
       securityGroupIDs:
-        - sg-02da53b25f06248fa  # Ensure this is a valid security group ID
+        - sg-03601bb7a0fee9f2b  # Ensure this is a valid security group ID
+      associatePublicIpAddress: false  # Do not associate a public IP address
