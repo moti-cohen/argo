@@ -2,6 +2,7 @@ apiVersion: ec2.services.k8s.aws/v1alpha1
 kind: Instance
 metadata:
   name: ec2-instance-9
+  namespace: default
 spec:
   availabilityZone: eu-west-1c
   cpuOptions: {}
@@ -10,8 +11,6 @@ spec:
   keyName: eks-private  # Replace with your EC2 key pair name if required
   monitoring:
     enabled: false
-  networkInterfaces:
-    - deviceIndex: 0  # Primary network interface
-      subnetID: subnet-0dd40057437e9bd30  # Replace with your subnet ID
-      securityGroupIDs:
-        - sg-03601bb7a0fee9f2b  # Replace with your security group ID
+  subnetID: subnet-0dd40057437e9bd30  # Use this instead of network interfaces
+  securityGroupIDs:
+    - sg-03601bb7a0fee9f2b  # Replace with your security group ID
