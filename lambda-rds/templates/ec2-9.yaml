@@ -8,9 +8,9 @@ spec:
   cpuOptions: {}
   imageID: ami-05842291b9a0bd79f
   instanceType: t2.micro
-  keyName: eks-private  # Replace with your EC2 key pair name if required
+  keyName: eks-private
   monitoring:
     enabled: true
-  subnetID: subnet-0dd40057437e9bd30  # Use this instead of network interfaces
+  subnetID: subnet-0dd40057437e9bd30
   securityGroupIDs:
-    - sg-03601bb7a0fee9f2b  # Replace with your security group ID
+    - sg-03601bb7a0fee9f2b
