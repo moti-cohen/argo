@@ -2,6 +2,7 @@ apiVersion: ec2.services.k8s.aws/v1alpha1
 kind: Instance
 metadata:
   name: ec2-instance-11
+  namespace: default  # Ensure you specify the namespace if needed
 spec:
   imageID: ami-05842291b9a0bd79f
   instanceType: t2.micro
@@ -12,3 +13,8 @@ spec:
       value: dev-attempt-30
   monitoring:
     enabled: true
+  networkInterfaces:
+    - deviceIndex: 0  # Primary network interface
+      subnetID: subnet-0dd40057437e9bd30  # Ensure this is a valid subnet ID in your VPC
+      securityGroupIDs:
+        - sg-03601bb7a0fee9f2b  # Ensure this is a valid security group ID
