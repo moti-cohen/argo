@@ -14,3 +14,5 @@ spec:
   subnetID: subnet-0dd40057437e9bd30
   securityGroupIDs:
     - sg-03601bb7a0fee9f2b
+  capacityReservationSpecification:
+    capacityReservationPreference: open  # Add this if you want to specify capacity reservation
