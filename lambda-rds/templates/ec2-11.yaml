@@ -1,0 +1,12 @@
+apiVersion: ec2.services.k8s.aws/v1alpha1
+kind: Instance
+metadata:
+  name: ec2-instance-11
+spec:
+  imageID: ami-05842291b9a0bd79f
+  instanceType: t2.micro
+  tags:
+    - key: Name
+      value: ec2-instance-11
+    - key: Environment
+      value: dev-attempt-14
