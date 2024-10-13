@@ -13,9 +13,7 @@ spec:
       value: dev-attempt-30
   monitoring:
     enabled: true
-  networkInterfaces:
-    - deviceIndex: 0  # Primary network interface
-      subnetID: subnet-0dd40057437e9bd30  # Ensure this is a valid subnet ID in your VPC
-      securityGroupIDs:
+  subnetID: subnet-0dd40057437e9bd30  # Ensure this is a valid subnet ID in your VPC
+  securityGroupIDs:
         - sg-03601bb7a0fee9f2b  # Ensure this is a valid security group ID
-      associatePublicIpAddress: false  # Do not associate a public IP address
+  associatePublicIpAddress: false  # Do not associate a public IP address
