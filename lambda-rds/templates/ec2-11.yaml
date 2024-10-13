@@ -10,3 +10,5 @@ spec:
       value: ec2-instance-30
     - key: Environment
       value: dev-attempt-14
+  monitoring:
+    enabled: true
