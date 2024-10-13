@@ -5,13 +5,8 @@ metadata:
   namespace: default
 spec:
   availabilityZone: eu-west-1c
-  imageID: ami-05842291b9a0bd79f  # Ensure this is correct
+  imageID: ami-05842291b9a0bd79f
   instanceType: t2.micro
-  keyName: eks-private
-  monitoring:
-    enabled: true
   networkInterfaces:
-    - deviceIndex: 0  # Primary network interface
+    - deviceIndex: 0
       subnetID: subnet-0dd40057437e9bd30
-      securityGroupIDs:
-        - sg-03601bb7a0fee9f2b
