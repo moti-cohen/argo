@@ -7,16 +7,14 @@ spec:
   # Disable automated backups since it adds time to the provisioning
   # workflow...
   backupRetentionPeriod: 0
-  copyTagsToSnapshot: $COPY_TAGS_TO_SNAPSHOT
   dbInstanceClass: db.t3.micro
-  dbInstanceIdentifier: $DB_INSTANCE_ID
   engine: postgres
   engineVersion: "14.9"
-  masterUsername: root
+  masterUsername: admin
   masterUserPassword:
-    namespace: $MASTER_USER_PASS_SECRET_NAMESPACE
-    name: $MASTER_USER_PASS_SECRET_NAME
-    key: $MASTER_USER_PASS_SECRET_KEY
+    namespace: default
+    name: rds-credentials-secret
+    key: password
   multiAZ: false
   tags:
     - key: environment
