@@ -1,34 +1,23 @@
 apiVersion: rds.services.k8s.aws/v1alpha1
 kind: DBInstance
 metadata:
-  name: rds-1
-  namespace: default
+  name: $DB_INSTANCE_ID
 spec:
-  # DB instance settings
-  dbInstanceClass: db.t3.micro               # Instance type
-  engine: mysql                              # RDS engine type (e.g., mysql, postgres)
-  engineVersion: "8.0"                       # MySQL version
-  allocatedStorage: 20                       # Storage size (in GB)
-
-  # Database details
-  dbName: mydatabase                         # Database name to create
-  masterUsername: admin                    # Master username
+  allocatedStorage: 5
+  # Disable automated backups since it adds time to the provisioning
+  # workflow...
+  backupRetentionPeriod: 0
+  copyTagsToSnapshot: $COPY_TAGS_TO_SNAPSHOT
+  dbInstanceClass: db.t3.micro
+  dbInstanceIdentifier: $DB_INSTANCE_ID
+  engine: postgres
+  engineVersion: "14.9"
+  masterUsername: root
   masterUserPassword:
-    secretKeyRef:
-      name: rds-credentials-secret           # Secret containing the DB password
-      key: password                          # Key inside the secret for password
-      
-  # Network settings
-  vpcSecurityGroupIDs:
-    - sg-03601bb7a0fee9f2b                    # Security group ID for RDS instance
-  dbSubnetGroupName: my-subnet-group         # Subnet group for RDS instance
-
-  # Backup, encryption, and monitoring
-  backupRetentionPeriod: 7                   # Backup retention (in days)
-  storageEncrypted: true                     # Enable storage encryption
-  monitoringInterval: 60                     # Enhanced monitoring (in seconds)
-  multiAZ: false                             # Single AZ deployment (set to true for Multi-AZ)
-
-  # Performance and optimization
-  autoMinorVersionUpgrade: true              # Automatically upgrade minor versions
-  publiclyAccessible: false 
+    namespace: $MASTER_USER_PASS_SECRET_NAMESPACE
+    name: $MASTER_USER_PASS_SECRET_NAME
+    key: $MASTER_USER_PASS_SECRET_KEY
+  multiAZ: false
+  tags:
+    - key: environment
+      value: dev
