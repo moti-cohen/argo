@@ -1,20 +1,34 @@
 apiVersion: rds.services.k8s.aws/v1alpha1
 kind: DBInstance
 metadata:
-  name: {{ .Values.rds.dbInstanceIdentifier }}
+  name: rds-1
   namespace: default
 spec:
-  dbInstanceIdentifier: {{ .Values.rds.dbInstanceIdentifier | quote }}
-  dbInstanceClass: {{ .Values.rds.dbInstanceClass | quote }}
-  engine: {{ .Values.rds.engine | quote }}
-  masterUsername: {{ .Values.rds.username | quote }}
+  # DB instance settings
+  dbInstanceClass: db.t3.micro               # Instance type
+  engine: mysql                              # RDS engine type (e.g., mysql, postgres)
+  engineVersion: "8.0"                       # MySQL version
+  allocatedStorage: 20                       # Storage size (in GB)
+
+  # Database details
+  dbName: mydatabase                         # Database name to create
+  masterUsername: admin                    # Master username
   masterUserPassword:
-    namespace: default
-    name: rds
-    key: password
-  allocatedStorage: {{ .Values.rds.allocatedStorage }}
-  backupRetentionPeriod: {{ .Values.rds.backupRetentionPeriod }}
-  publiclyAccessible: false
+    secretKeyRef:
+      name: rds-credentials-secret           # Secret containing the DB password
+      key: password                          # Key inside the secret for password
+      
+  # Network settings
   vpcSecurityGroupIDs:
-    - {{ .Values.rds.id }}
-  dbSubnetGroupName: {{ .Values.rds.subnetGroupName | quote }}
+    - sg-03601bb7a0fee9f2b                    # Security group ID for RDS instance
+  dbSubnetGroupName: my-subnet-group         # Subnet group for RDS instance
+
+  # Backup, encryption, and monitoring
+  backupRetentionPeriod: 7                   # Backup retention (in days)
+  storageEncrypted: true                     # Enable storage encryption
+  monitoringInterval: 60                     # Enhanced monitoring (in seconds)
+  multiAZ: false                             # Single AZ deployment (set to true for Multi-AZ)
+
+  # Performance and optimization
+  autoMinorVersionUpgrade: true              # Automatically upgrade minor versions
+  publiclyAccessible: false 
