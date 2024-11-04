@@ -5,7 +5,7 @@ metadata:
   namespace: tf-system
 spec:
   terraformModule:
-    source: "https://github.com/moti-cohen/argo.git"
+    source: "git::https://github.com/moti-cohen/argo.git//lambda-rds"
     version: "v1.0.0"
   variables:
     - name: AWS_REGION
