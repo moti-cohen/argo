@@ -5,7 +5,7 @@
 provider "aws" {
   region               = var.ec2_region_deployment
    assume_role {
-    role_arn          = "arn:aws:iam::${local.account_id}:role/torque-deployments"
+    role_arn          = "arn:aws:iam::113834750184:role/torque-deployments"
 
   }
   default_tags {
