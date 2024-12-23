@@ -16,11 +16,6 @@ provider "aws" {
   }
 }
 
-provider "aws" {
-  region                                      = "eu-west-1"
-  alias                                       = "aws_alm"
-}
-
 data "aws_ssm_parameter" "torque-retrieve_the_vpcid_and_subnetid" {
   provider                = aws.aws_alm
   name                    = "torque-retrieve_the_vpcid_and_subnetid"
@@ -30,33 +25,7 @@ data "aws_ssm_parameter" "torque-retrieve_the_vpcid_and_subnetid" {
 #  🍄  The algoritem to Retrieve the account id & VPC & SubnetID for deployment  🍄  **
 #***************************************************************************************
 
-locals { 
-  # Splitting the multi-line parameter store value into a list of lines 
-  accounts_objects_values = split("\n", data.aws_ssm_parameter.torque-retrieve_the_vpcid_and_subnetid.value) 
-  
-  # Finding the specific line that matches the account name 
-  selected_account_values = [for line in local.accounts_objects_values : line if can(regex("${var.ec2_account_deployment}:.*:${var.ec2_region_deployment}.*", line))][0] 
-  
-  # Splitting the selected line into individual components 
-  account_fields = split(":", local.selected_account_values) 
-  
-  
-  account_name = local.account_fields[0] 
-  account_id = local.account_fields[1] 
-  vpc_id = local.account_fields[3] 
-  subnet_ids_raw = trim(local.account_fields[4], "[]") 
-  subnet_ids_list = split(",", replace(local.subnet_ids_raw, " ", "")) 
-}
-
 ###################################################
-
-#locals { 
-#  ec2_security_group_list = ( 
-#    can(var.ec2_security_group[0]) ? tolist(var.ec2_security_group) : tolist([var.ec2_security_group])
-#  )
-#}
-
-
 
 resource "aws_instance" "ec2_instance" {
   ami                    = var.ec2_ami
