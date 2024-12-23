@@ -41,5 +41,5 @@ variable "ec2_name" {
 
 variable "ec2_security_group" {
    type   = list(string)
-   default   = "sg-086cb401b675c8483"
+   default   = ["sg-086cb401b675c8483"]
 }
