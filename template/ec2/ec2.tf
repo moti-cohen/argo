@@ -25,8 +25,8 @@ provider "aws" {
 resource "aws_instance" "ec2_instance" {
   ami                    = var.ec2_ami
   instance_type          = var.ec2_type
-  key_name               = "${local.account_id}.${var.ec2_region_deployment}.ec2AccountKey"
-  subnet_id              = element(local.subnet_ids_list, 0)
+  key_name               = "113834750184.${var.ec2_region_deployment}.ec2AccountKey"
+  subnet_id              = "subnet-03dce85b57e01e3a9"
   vpc_security_group_ids = var.ec2_security_group
   #iam_instance_profile   = var.ssm_role
 
