@@ -16,11 +16,6 @@ provider "aws" {
   }
 }
 
-data "aws_ssm_parameter" "torque-retrieve_the_vpcid_and_subnetid" {
-  provider                = aws.aws_alm
-  name                    = "torque-retrieve_the_vpcid_and_subnetid"
-}
-
 #***************************************************************************************
 #  🍄  The algoritem to Retrieve the account id & VPC & SubnetID for deployment  🍄  **
 #***************************************************************************************
