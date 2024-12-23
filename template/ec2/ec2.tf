@@ -3,7 +3,7 @@
 ###########################################
 
 provider "aws" {
-  region               = "eu-wes-1"
+  region               = "eu-west-1"
    assume_role {
     role_arn          = "arn:aws:iam::113834750184:role/argo-deploy"
 
