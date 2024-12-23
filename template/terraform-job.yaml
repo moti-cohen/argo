@@ -26,4 +26,4 @@ spec:
         gitRepo:
           repository: https://github.com/moti-cohen/argo.git
           revision: main
-          directory: template/ec2  # Path to your .tf files in the repo
+          directory: template/
