@@ -5,7 +5,7 @@
 provider "aws" {
   region               = "eu-west-1"
    assume_role {
-    role_arn          = "arn:aws:iam::113834750184:role/argo-deploy"
+    role_arn          = "arn:aws:iam::113834750184:role/torque-deployments"
 
   }
   default_tags {
