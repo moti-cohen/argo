@@ -2,21 +2,22 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: terraform-job
-  namespace: default
   labels:
     app: terraform
 spec:
   template:
     spec:
+      serviceAccountName: terraform-deploy-sa  # Add your service account name here
       containers:
       - name: terraform
         image: hashicorp/terraform:latest
         command:
-        - /bin/sh
-        - -c
-        - |
-          terraform init &&
-          terraform apply -auto-approve
+        - terraform
+        - init
+        - && 
+        - terraform
+        - apply
+        - "-auto-approve"
         volumeMounts:
         - mountPath: /workspace
           name: terraform-code
@@ -26,4 +27,4 @@ spec:
         gitRepo:
           repository: https://github.com/moti-cohen/argo.git
           revision: main
-          directory: template/ec2
+          directory: template/
