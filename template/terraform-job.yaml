@@ -6,13 +6,10 @@ metadata:
   labels:
     app: terraform
 spec:
-  selector:
-    matchLabels:
-      app: terraform  # Selector that matches pod template labels
   template:
     metadata:
       labels:
-        app: terraform  # Labels for the pod template, must match the selector
+        app: terraform  # Ensure the labels match here for the pod template
     spec:
       serviceAccountName: terraform-deploy-sa
       containers:
