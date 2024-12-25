@@ -2,11 +2,12 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: terraform-job
-  namespace: default # Specify the namespace here
+  namespace: default  # Specify the namespace here
 spec:
   template:
     spec:
       serviceAccountName: terraform-deploy-sa
+      restartPolicy: OnFailure  # Add the restart policy here
       initContainers:
         - name: git-clone
           image: alpine:latest
@@ -19,7 +20,7 @@ spec:
               ls -al /workspace
           volumeMounts:
             - mountPath: /workspace
-              name: terraform-code
+              name: terraform-code  # Ensure this matches the volume name
       containers:
         - name: terraform
           image: hashicorp/terraform:latest
@@ -31,5 +32,7 @@ spec:
             - name: workspace
               mountPath: /workspace
       volumes:
+        - name: terraform-code  # Define the terraform-code volume
+          emptyDir: {}  # Use an emptyDir volume or another appropriate type
         - name: workspace
           emptyDir: {}
