@@ -7,7 +7,7 @@ metadata:
 spec:
   template:
     spec:
-      serviceAccountName: terraform-deploy-sa  # Add your service account name here
+      serviceAccountName: terraform-deploy-sa
       containers:
       - name: terraform
         image: hashicorp/terraform:latest
