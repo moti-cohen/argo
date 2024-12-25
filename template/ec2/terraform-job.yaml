@@ -1,1 +1,32 @@
-
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: terraform-job
+  namespace: default  # or specify your desired namespace
+  labels:
+    app: terraform
+spec:
+  template:
+    metadata:
+      labels:
+        app: terraform  # Ensure the labels match here for the pod template
+    spec:
+      serviceAccountName: terraform-deploy-sa
+      containers:
+      - name: terraform
+        image: hashicorp/terraform:latest
+        command:
+        - /bin/sh
+        - -c
+        - |
+          terraform init && terraform apply -auto-approve
+        volumeMounts:
+        - mountPath: /workspace
+          name: terraform-code
+      restartPolicy: OnFailure
+      volumes:
+      - name: terraform-code
+        gitRepo:
+          repository: https://github.com/moti-cohen/argo.git
+          revision: main
+          directory: template/
