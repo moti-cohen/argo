@@ -12,12 +12,10 @@ spec:
       - name: terraform
         image: hashicorp/terraform:latest
         command:
-        - terraform
-        - init
-        - && 
-        - terraform
-        - apply
-        - "-auto-approve"
+        - /bin/sh
+        - -c
+        - |
+          terraform init && terraform apply -auto-approve
         volumeMounts:
         - mountPath: /workspace
           name: terraform-code
