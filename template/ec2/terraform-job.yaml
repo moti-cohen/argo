@@ -2,11 +2,17 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: terraform-job
-  namespace: default  # Add your desired namespace here
+  namespace: default  # or specify your desired namespace
   labels:
     app: terraform
 spec:
+  selector:
+    matchLabels:
+      app: terraform  # Selector that matches pod template labels
   template:
+    metadata:
+      labels:
+        app: terraform  # Labels for the pod template, must match the selector
     spec:
       serviceAccountName: terraform-deploy-sa
       containers:
