@@ -36,7 +36,7 @@ variable "ec2_type" {
 
 variable "ec2_name" {
     type = string
-    default  = "ec2_deployed_from_backstage"
+    default  = "deployed_from_backstage"
 }
 
 variable "ec2_security_group" {
