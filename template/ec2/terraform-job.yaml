@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: terraform-job
+  namespace: default  # Add your desired namespace here
   labels:
     app: terraform
 spec:
