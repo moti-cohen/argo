@@ -2,37 +2,34 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: terraform-job
+  namespace: your-namespace # Specify the namespace here
 spec:
   template:
     spec:
       serviceAccountName: terraform-deploy-sa
       initContainers:
-      - name: git-clone
-        image: alpine:latest
-        command:
-          - /bin/sh
-          - -c
-          - |
-            apk add --no-cache git &&
-            git clone https://github.com/moti-cohen/argo.git /workspace &&
-            ls -al /workspace
-        volumeMounts:
-          - mountPath: /workspace
-            name: terraform-code
+        - name: git-clone
+          image: alpine:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              apk add --no-cache git &&
+              git clone https://github.com/moti-cohen/argo.git /workspace &&
+              ls -al /workspace
+          volumeMounts:
+            - mountPath: /workspace
+              name: terraform-code
       containers:
-      - name: terraform
-        image: hashicorp/terraform:latest
-        workingDir: /workspace/template/ec2
-        command:
-          - /bin/sh
-          - -c
-          - |
-            terraform init &&
-            terraform validate
-        volumeMounts:
-        - name: terraform-code
-          mountPath: /workspace
-      restartPolicy: Never
+        - name: terraform
+          image: hashicorp/terraform:latest
+          workingDir: /workspace/template/ec2
+          command:
+            - terraform
+            - validate
+          volumeMounts:
+            - name: workspace
+              mountPath: /workspace
       volumes:
-      - name: terraform-code
-        emptyDir: {}
+        - name: workspace
+          emptyDir: {}
