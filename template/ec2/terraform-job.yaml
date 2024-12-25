@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: terraform-job
-  namespace: your-namespace # Specify the namespace here
+  namespace: default # Specify the namespace here
 spec:
   template:
     spec:
