@@ -22,17 +22,17 @@ spec:
       containers:
       - name: terraform
         image: hashicorp/terraform:latest
+        workingDir: /workspace/template/ec2
         command:
           - /bin/sh
           - -c
           - |
-            cd /workspace/template &&
             terraform init &&
-            terraform apply -auto-approve
+            terraform validate
         volumeMounts:
-          - mountPath: /workspace
-            name: terraform-code
-      restartPolicy: OnFailure
+        - name: terraform-code
+          mountPath: /workspace
+      restartPolicy: Never
       volumes:
       - name: terraform-code
         emptyDir: {}
