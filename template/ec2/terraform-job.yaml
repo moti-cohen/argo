@@ -19,7 +19,7 @@ spec:
         - /bin/sh
         - -c
         - |
-          terraform init && terraform apply -auto-approve
+          apk update && apk add git && terraform init && terraform apply -auto-approve
         volumeMounts:
         - mountPath: /workspace
           name: terraform-code
