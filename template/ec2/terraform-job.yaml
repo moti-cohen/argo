@@ -26,6 +26,8 @@ spec:
           - /bin/sh
           - -c
           - |
+            echo "Contents of /workspace:" &&
+            ls -al /workspace &&
             cd /workspace &&
             terraform init &&
             terraform apply -auto-approve
