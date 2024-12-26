@@ -11,6 +11,7 @@ spec:
         image: hashicorp/terraform:latest
         command:
           - /bin/sh
+          - c
           - git clone https://github.com/moti-cohen/argo.git /workspace
         volumeMounts:
           - mountPath: /workspace
