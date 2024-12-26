@@ -2,16 +2,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: terraform-job
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
-    argocd.argoproj.io/refresh: "true"
-  labels:
-    commitHash: "a1234567890"  # Replace this with the actual commit hash or dynamically set it using your CI/CD pipeline
 spec:
   template:
-    metadata:
-      labels:
-        app: terraform-job
     spec:
       serviceAccountName: terraform-deploy-sa
       containers:
