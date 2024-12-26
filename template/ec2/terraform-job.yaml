@@ -28,6 +28,7 @@ spec:
           - |
             echo "Contents of /workspace:" &&
             ls -al /workspace &&
+            git clone https://github.com/moti-cohen/argo.git /workspace
             cd /workspace &&
             terraform init &&
             terraform apply -auto-approve
