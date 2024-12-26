@@ -15,7 +15,7 @@ spec:
           - git clone https://github.com/moti-cohen/argo.git /workspace
           - cd /workspace/template/ec2
           - terraform init -chdir=/workspace/template/ec2
-          - terraform apply -auto-approve
+          - terraform apply -auto-approve -chdir=/workspace/template/ec2
         volumeMounts:
           - mountPath: /workspace
             name: terraform-code
