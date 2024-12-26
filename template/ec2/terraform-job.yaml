@@ -10,16 +10,15 @@ spec:
       - name: terraform
         image: hashicorp/terraform:latest
         command:
-          command:
-            - /bin/sh
-            - -c
-            - |
-              rm -rf /workspace/* &&
-              git clone https://github.com/moti-cohen/argo.git /workspace &&
-              cd /workspace/template/ec2 &&
-              terraform init &&
-              terraform plan &&
-              terraform apply -auto-approve
+          - /bin/sh
+        args:
+          - -c
+          - |
+            rm -rf /workspace/* &&
+            git clone https://github.com/moti-cohen/argo.git /workspace &&
+            cd /workspace/template/ec2 &&
+            terraform init &&
+            terraform apply -auto-approve
         volumeMounts:
           - mountPath: /workspace
             name: terraform-code
