@@ -6,30 +6,12 @@ spec:
   template:
     spec:
       serviceAccountName: terraform-deploy-sa
-      initContainers:
-      - name: git-clone
-        image: alpine:latest
-        command:
-          - /bin/sh
-          - -c
-          - |
-            apk add --no-cache git &&
-            git clone https://github.com/moti-cohen/argo.git /workspace
-        volumeMounts:
-          - mountPath: /workspace
-            name: terraform-code
       containers:
       - name: terraform
         image: hashicorp/terraform:latest
         command:
           - /bin/sh
-          - -c
-          - |
-            echo "Contents of /workspace:" &&
-            ls -al /workspace &&
-            cd /workspace &&
-            terraform init &&
-            terraform apply -auto-approve
+          - sleep 1000
         volumeMounts:
           - mountPath: /workspace
             name: terraform-code
