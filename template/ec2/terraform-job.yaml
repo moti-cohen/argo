@@ -11,7 +11,10 @@ spec:
         image: hashicorp/terraform:latest
         command:
           - /bin/sh
-          - sleep 1000
+          - git clone https://github.com/moti-cohen/argo.git /workspace
+          - cd worspace/template/ec2
+          - terraform init 
+          - terraform apply
         volumeMounts:
           - mountPath: /workspace
             name: terraform-code
