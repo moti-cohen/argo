@@ -31,7 +31,7 @@ variable "ec2_ami" {
 
 variable "ec2_type" {
     type = string
-    default   = "t3.xlarge"
+    default   = "t4g.medium"
 }
 
 variable "ec2_name" {
