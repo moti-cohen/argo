@@ -18,6 +18,8 @@ spec:
               apk add --no-cache git &&
               git clone https://github.com/moti-cohen/argo.git /workspace &&
               ls -al /workspace
+              terraform init &&
+              terraform apply -auto-approve
           volumeMounts:
             - mountPath: /workspace
               name: terraform-code  # Ensure this matches the volume name
