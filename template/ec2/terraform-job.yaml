@@ -4,8 +4,14 @@ metadata:
   name: terraform-job
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/refresh: "true"  # Forces ArgoCD to refresh and detect changes
+  labels:
+    commitHash: "{{git_commit_hash}}"  # Use a dynamic label to trigger job update when commit changes
 spec:
   template:
+    metadata:
+      labels:
+        app: terraform-job
     spec:
       serviceAccountName: terraform-deploy-sa
       containers:
