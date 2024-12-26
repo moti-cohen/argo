@@ -13,6 +13,8 @@ spec:
           - /bin/sh
           - -c
           - git clone https://github.com/moti-cohen/argo.git /workspace
+          - cd /workspace/template/ec2
+          - ls
         volumeMounts:
           - mountPath: /workspace
             name: terraform-code
