@@ -20,7 +20,7 @@ spec:
             - |
               rm -rf /workspace/* &&
               git clone https://github.com/moti-cohen/argo.git /workspace &&
-              cd /workspace/template/ec2 &&
+              cd /workspace/files &&
               terraform init &&
               terraform plan &&
               terraform apply -auto-approve &&
@@ -28,7 +28,23 @@ spec:
           volumeMounts:
             - mountPath: /workspace
               name: terraform-code
+            - mountPath: /workspace/terraform.tfstate.d
+              name: terraform-state
       restartPolicy: OnFailure
       volumes:
+        - name: terraform-state
+          persistentVolumeClaim:
+            claimName: terraform-state-pvc
         - name: terraform-code
           emptyDir: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: terraform-state-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
