@@ -18,13 +18,13 @@ spec:
           args:
             - -c
             - |
-              rm -f /workspace/terraform.tfstate.d/terraform.tfstate &&
+              rm -rf /workspace/* &&  # Ensure /workspace is empty
               git clone https://github.com/moti-cohen/argo.git /workspace &&
               cd /workspace/files &&
               terraform init &&
               terraform plan &&
               terraform apply -auto-approve &&
-              echo "Terraform applied successfully" || (echo "Terraform apply failed" && exit 1)
+              echo "Terraform applied successfully" || echo "Terraform apply failed"
           volumeMounts:
             - mountPath: /workspace/code
               name: terraform-code
