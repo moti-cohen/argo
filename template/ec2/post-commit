@@ -1,0 +1,5 @@
+#!/bin/bash
+terraform_checksum=$(find template/ec2 -type f -exec md5sum {} \; | md5sum | awk '{print $1}')
+sed -i "s/^terraformVersion: .*/terraformVersion: \"$terraform_checksum\"/" helm/values.yaml
+git add helm/values.yaml
+git commit -m "Update terraform version to $terraform_checksum"
