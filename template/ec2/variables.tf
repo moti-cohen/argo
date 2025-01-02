@@ -31,7 +31,7 @@ variable "ec2_ami" {
 
 variable "ec2_type" {
     type = string
-    default   = "t4g.medium"
+    default   = "t2.micro"
 }
 
 variable "ec2_name" {
