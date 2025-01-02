@@ -3,9 +3,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
+  name: terraform-job-{{ printf "%s" $filetfvar | sha256sum | trunc 8 }}
   annotations:
     checksum/config: "{{ printf "%s%s" $filetfvar $filetf | sha256sum }}"
-  name: terraform-job
 spec:
   template:
     spec:
