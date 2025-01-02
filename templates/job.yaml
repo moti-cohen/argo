@@ -18,15 +18,19 @@ spec:
           args:
             - -c
             - |
-              umount /workspace/code || true;  # Try unmounting /workspace/code, ignore errors
-              umount /workspace/state || true;  # Try unmounting /workspace/state, ignore errors
-              rm -rf /workspace/code /workspace/state /workspace/* /workspace/.* &&  # Clear all contents
-              git clone https://github.com/moti-cohen/argo.git /workspace &&
-              cd /workspace/files &&
-              terraform init &&
-              terraform plan &&
-              terraform apply -auto-approve &&
-              echo "Terraform applied successfully" || echo "Terraform apply failed"
+            # Ensure the workspace is clean before proceeding
+            echo "Cleaning up workspace..." 
+            rm -rf /workspace/code || true
+            rm -rf /workspace/state || true
+            rm -rf /workspace/* /workspace/.* || true
+
+            # Clone the repo and run Terraform commands
+            git clone https://github.com/moti-cohen/argo.git /workspace &&
+            cd /workspace/files &&
+            terraform init &&
+            terraform plan &&
+            terraform apply -auto-approve &&
+            echo "Terraform applied successfully" || echo "Terraform apply failed"
           volumeMounts:
             - mountPath: /workspace/code
               name: terraform-code
