@@ -27,9 +27,9 @@ spec:
               terraform apply -auto-approve &&
               echo "Terraform applied successfully" || (echo "Terraform apply failed" && exit 1)
           volumeMounts:
-            - mountPath: /workspace
+            - mountPath: /workspace/code
               name: terraform-code
-            - mountPath: /workspace/terraform.tfstate.d
+            - mountPath: /workspace/state
               name: terraform-state
       restartPolicy: OnFailure
       volumes:
