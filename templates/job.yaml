@@ -24,7 +24,7 @@ spec:
               terraform init &&
               terraform plan &&
               terraform apply -auto-approve &&
-    e         cho "Terraform applied successfully" || (echo "Terraform apply failed" && exit 1)
+              echo "Terraform applied successfully" || (echo "Terraform apply failed" && exit 1)
           volumeMounts:
             - mountPath: /workspace/code
               name: terraform-code
