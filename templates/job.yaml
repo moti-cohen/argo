@@ -3,7 +3,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: terraform-job-{{ printf "%s" $filetfvar | sha256sum | trunc 8 }}
+  name: terraform-job-{{ printf "%s" $filetfvar | sha256sum | trunc 8 }}-{{ now | date "20060102-150405" }}
   annotations:
     checksum/config: "{{ printf "%s%s" $filetfvar $filetf | sha256sum }}"
 spec:
