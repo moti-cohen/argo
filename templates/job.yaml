@@ -18,7 +18,9 @@ spec:
           args:
             - -c
             - |
-              rm -rf /workspace/* /workspace/.* &&  # Clear all contents, including hidden files
+              umount /workspace/code || true;  # Try unmounting /workspace/code, ignore errors
+              umount /workspace/state || true;  # Try unmounting /workspace/state, ignore errors
+              rm -rf /workspace/code /workspace/state /workspace/* /workspace/.* &&  # Clear all contents
               git clone https://github.com/moti-cohen/argo.git /workspace &&
               cd /workspace/files &&
               terraform init &&
